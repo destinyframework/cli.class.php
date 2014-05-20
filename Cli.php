@@ -5,12 +5,13 @@
      * It provides _autoloading functionality for other classes and options handling.
      * You can extend the class or even pass it as a simple cli object.
      *
-     * @package cli.class.php
-     * @author Duane Jeffers <duane@jeffe.rs>
-     * @version 0.1
-     * @copyright Copyright (c) 2012-2013, Duane Jeffers <duane@jeffe.rs>
+     * @package CLI
+     * @author Duane Jeffers <duane@duanejeffers.com>
+     * @version 0.2
+     * @copyright Copyright (c) 2012-2013, Duane Jeffers <duane@duanejeffers.com>, 2014, Duane Jeffers / Destiny Framework
      *
-     * Copyright (c) 2012-2013 Duane Jeffers <duane@jeffe.rs>
+     * Copyright (c) 2012-2013 Duane Jeffers <duane@duanejeffers.com>,
+     *           (c) 2014 Duane Jeffers / Destiny Framework <http://destinyframework.github.io>
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +32,8 @@
      * THE SOFTWARE.
      **/
 	
+    namespace Destiny\Cli;
+
     class Cli {
         /* Constants */
         /* Output Color Constants */
@@ -100,7 +103,6 @@
 
         /* Protected Variables */
         protected $_options      = array();
-        protected $_autoloadOpts = array('ext' => '.php');
         protected $_verbose      = FALSE; // Defaults to false. This will add a 'verbose' and 'v' option to the extended options. - IF v or verbose is one of the list of options, then the code will not over ride that.
         protected $_help         = array();
 		protected $_optionFile   = array('file_loc' => NULL, 'parse_type' => 'INI');
@@ -111,15 +113,6 @@
         /* Private Functions */
 
         /* Protected Functions */
-
-        /* _autoload is the main autoloading class.
-         *
-         * @param string $class The class name to pass to the include.
-         */
-        protected function _autoload($class) {
-            $inc_file = $class . $this->_autoloadOpts['ext'];
-            include $inc_file;
-        }
 
         /* Public Functions */
 		
@@ -287,7 +280,7 @@
         }
 
         /* autoload sets up the cli object as an autoloader.
-         *
+         * **TODO: Replace with Destiny Autoloader
          * @param string $ext The include extension. Useful for adding: '.inc.php' DEFAULT: '.php'
          */
         public function autoload($ext = '.php') {

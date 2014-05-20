@@ -1,6 +1,6 @@
 {
-	"name":"duanejeffers/cli.class.php",
-	"description":"Simple object for creating CLI programs in PHP",
+	"name":"destinyframework/cli",
+	"description":"Simple object for creating CLI programs in PHP. Reworked from duanejeffers/cli.class.php to be PSR-4 compliant and includes hooks in to Destiny Framework.",
 	"authors":[
 		{
 			"name":"Duane Jeffers",
@@ -9,9 +9,11 @@
 			"role":"Developer"
 		}
 	],
-	"version":"0.1",
+	"version":"0.2-destiny",
 	"license":"MIT",
 	"autoload":{
-		"files":["Cli.php"]
+		"psr-4":{
+			"Destiny\\Cli\\":"src/"
+		}
 	}
 }
